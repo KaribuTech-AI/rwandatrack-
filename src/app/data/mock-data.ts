@@ -103,53 +103,53 @@ export interface UserRecord {
 }
 
 export const dashboardStats: StatCard[] = [
-  { label: 'Tracked Products', value: '2.41M', delta: '12.4% vs last week', tone: 'delta-up', icon: '📦', cardClass: 'sc-green', route: 'inventory' },
-  { label: 'Active Facilities', value: '1,847', delta: '94 newly onboarded', tone: 'delta-up', icon: '🏢', cardClass: 'sc-blue', route: 'stakeholders' },
-  { label: 'Active Recalls', value: '2', delta: '3 resolved this week', tone: 'delta-down', icon: '🚨', cardClass: 'sc-red', route: 'recalls' },
-  { label: 'Counterfeit Flags', value: '5', delta: 'Under investigation', tone: 'delta-warn', icon: '⚠️', cardClass: 'sc-amber', route: 'counterfeit' },
+  { label: 'Tracked Products', value: '2.41M', delta: '12.4% vs last week', tone: 'delta-up', icon: '\u{1F4E6}', cardClass: 'sc-green', route: 'inventory' },
+  { label: 'Active Facilities', value: '1,847', delta: '94 newly onboarded', tone: 'delta-up', icon: '\u{1F3E2}', cardClass: 'sc-blue', route: 'stakeholders' },
+  { label: 'Active Recalls', value: '2', delta: '3 resolved this week', tone: 'delta-down', icon: '\u{1F6A8}', cardClass: 'sc-red', route: 'recalls' },
+  { label: 'Counterfeit Flags', value: '5', delta: 'Under investigation', tone: 'delta-warn', icon: '\u26A0\uFE0F', cardClass: 'sc-amber', route: 'counterfeit' },
 ];
 
 export const inventoryStats: StatCard[] = [
-  { label: 'Total SKUs Tracked', value: '4,218', delta: '34 this week', tone: 'delta-up', icon: '📦' },
-  { label: 'Facilities Reporting', value: '1,724', delta: '94% of registered', tone: 'delta-up', icon: '🏪' },
-  { label: 'Low Stock Alerts', value: '12', delta: 'Requires attention', tone: 'delta-warn', icon: '⚠️' },
+  { label: 'Total SKUs Tracked', value: '4,218', delta: '34 this week', tone: 'delta-up', icon: '\u{1F4E6}' },
+  { label: 'Facilities Reporting', value: '1,724', delta: '94% of registered', tone: 'delta-up', icon: '\u{1F3EA}' },
+  { label: 'Low Stock Alerts', value: '12', delta: 'Requires attention', tone: 'delta-warn', icon: '\u26A0\uFE0F' },
 ];
 
 export const analyticsKpis: StatCard[] = [
-  { label: 'Total Events (30d)', value: '1,247,832', delta: '18.2% vs last period', tone: 'delta-up', icon: '📊' },
-  { label: 'Avg. Daily Events', value: '41,594', delta: '4.1% vs last period', tone: 'delta-up', icon: '📈' },
-  { label: 'Verification Scans', value: '324,100', delta: '9.7% vs last period', tone: 'delta-up', icon: '🔎' },
+  { label: 'Total Events (30d)', value: '1,247,832', delta: '18.2% vs last period', tone: 'delta-up', icon: '\u{1F4CA}' },
+  { label: 'Avg. Daily Events', value: '41,594', delta: '4.1% vs last period', tone: 'delta-up', icon: '\u{1F4C8}' },
+  { label: 'Verification Scans', value: '324,100', delta: '9.7% vs last period', tone: 'delta-up', icon: '\u{1F50E}' },
 ];
 
 export const events: EventRow[] = [
-  { id: 'EVT-8841', type: 'Commissioning', epc: '0614141.107346.2017', actor: 'Shelys Pharma Ltd', location: 'Kigali - Mfr', status: 'active', timestamp: '09 Apr · 10:24' },
-  { id: 'EVT-8840', type: 'Aggregation', epc: '0614141.777890.0052', actor: 'RMS Warehouse', location: 'Kicukiro', status: 'transit', timestamp: '09 Apr · 10:19' },
-  { id: 'EVT-8839', type: 'Receiving', epc: '0614141.034215.9831', actor: 'Kigali Pharmacy Plus', location: 'Nyarugenge', status: 'active', timestamp: '09 Apr · 10:11' },
-  { id: 'EVT-8838', type: 'Dispensing', epc: '0614141.290001.1102', actor: 'CHK Hospital', location: 'Kigali Central', status: 'dispensed', timestamp: '09 Apr · 09:58' },
-  { id: 'EVT-8837', type: 'Hold / Suspect', epc: '0614141.500122.4400', actor: 'Rwanda FDA Inspector', location: 'Gasabo', status: 'hold', timestamp: '09 Apr · 09:44' },
-  { id: 'EVT-8836', type: 'Recall - Batch', epc: '0614141.104700.0019', actor: 'Rwanda FDA', location: 'Nationwide', status: 'recalled', timestamp: '08 Apr · 17:30' },
-  { id: 'EVT-8835', type: 'Commissioning', epc: '0614141.201100.0330', actor: 'Shelys Pharma Ltd', location: 'Kigali - Mfr', status: 'active', timestamp: '08 Apr · 14:20' },
-  { id: 'EVT-8834', type: 'Shipping', epc: '0614141.890022.1440', actor: 'AfriMed Ltd', location: 'Musanze', status: 'transit', timestamp: '08 Apr · 11:10' },
+  { id: 'EVT-8841', type: 'Commissioning', epc: '0614141.107346.2017', actor: 'Shelys Pharma Ltd', location: 'Kigali - Mfr', status: 'active', timestamp: '09 Apr \u00B7 10:24' },
+  { id: 'EVT-8840', type: 'Aggregation', epc: '0614141.777890.0052', actor: 'RMS Warehouse', location: 'Kicukiro', status: 'transit', timestamp: '09 Apr \u00B7 10:19' },
+  { id: 'EVT-8839', type: 'Receiving', epc: '0614141.034215.9831', actor: 'Kigali Pharmacy Plus', location: 'Nyarugenge', status: 'active', timestamp: '09 Apr \u00B7 10:11' },
+  { id: 'EVT-8838', type: 'Dispensing', epc: '0614141.290001.1102', actor: 'CHK Hospital', location: 'Kigali Central', status: 'dispensed', timestamp: '09 Apr \u00B7 09:58' },
+  { id: 'EVT-8837', type: 'Hold / Suspect', epc: '0614141.500122.4400', actor: 'Rwanda FDA Inspector', location: 'Gasabo', status: 'hold', timestamp: '09 Apr \u00B7 09:44' },
+  { id: 'EVT-8836', type: 'Recall - Batch', epc: '0614141.104700.0019', actor: 'Rwanda FDA', location: 'Nationwide', status: 'recalled', timestamp: '08 Apr \u00B7 17:30' },
+  { id: 'EVT-8835', type: 'Commissioning', epc: '0614141.201100.0330', actor: 'Shelys Pharma Ltd', location: 'Kigali - Mfr', status: 'active', timestamp: '08 Apr \u00B7 14:20' },
+  { id: 'EVT-8834', type: 'Shipping', epc: '0614141.890022.1440', actor: 'AfriMed Ltd', location: 'Musanze', status: 'transit', timestamp: '08 Apr \u00B7 11:10' },
 ];
 
 export const alerts: AlertItem[] = [
-  { title: 'Recall: Batch RW-2024-0412', meta: 'Amoxicillin 500mg · 38 units · Nationwide', time: '2h ago', icon: '🚨', iconClass: 'ai-red', route: 'recalls' },
-  { title: 'Counterfeit Suspected', meta: 'GTIN 0614141.5001 · Gasabo District', time: '4h ago', icon: '⚠️', iconClass: 'ai-amber', route: 'counterfeit' },
-  { title: 'Duplicate Serial Detected', meta: 'Same serial at 2 locations simultaneously', time: '5h ago', icon: '⚠️', iconClass: 'ai-amber', route: 'counterfeit' },
-  { title: 'Diversion Detected', meta: 'Product moved outside authorized chain', time: '6h ago', icon: '🔄', iconClass: 'ai-amber', route: 'audit' },
-  { title: 'ESW Sync Delayed', meta: 'Customs data 12 minutes behind real-time', time: '14m ago', icon: '🔗', iconClass: 'ai-blue', route: 'integrations' },
-  { title: 'Recall RW-2024-0405 Resolved', meta: 'All 112 units deactivated successfully', time: '1d ago', icon: '✅', iconClass: 'ai-green', route: 'recalls' },
+  { title: 'Recall: Batch RW-2024-0412', meta: 'Amoxicillin 500mg \u00B7 38 units \u00B7 Nationwide', time: '2h ago', icon: '\u{1F6A8}', iconClass: 'ai-red', route: 'recalls' },
+  { title: 'Counterfeit Suspected', meta: 'GTIN 0614141.5001 \u00B7 Gasabo District', time: '4h ago', icon: '\u26A0\uFE0F', iconClass: 'ai-amber', route: 'counterfeit' },
+  { title: 'Duplicate Serial Detected', meta: 'Same serial at 2 locations simultaneously', time: '5h ago', icon: '\u26A0\uFE0F', iconClass: 'ai-amber', route: 'counterfeit' },
+  { title: 'Diversion Detected', meta: 'Product moved outside authorized chain', time: '6h ago', icon: '\u{1F504}', iconClass: 'ai-amber', route: 'audit' },
+  { title: 'ESW Sync Delayed', meta: 'Customs data 12 minutes behind real-time', time: '14m ago', icon: '\u{1F517}', iconClass: 'ai-blue', route: 'integrations' },
+  { title: 'Recall RW-2024-0405 Resolved', meta: 'All 112 units deactivated successfully', time: '1d ago', icon: '\u2705', iconClass: 'ai-green', route: 'recalls' },
 ];
 
 export const notificationItems: AlertItem[] = [
-  { title: 'Recall Initiated', meta: 'Amoxicillin 500mg recall broadcast to all facilities', time: '2h ago', icon: '🚨', iconClass: 'ai-red', route: 'recalls', unread: true },
-  { title: 'Counterfeit Flag CF-0041', meta: 'Serial not found in registry during Gasabo inspection', time: '4h ago', icon: '⚠️', iconClass: 'ai-amber', route: 'counterfeit', unread: true },
-  { title: 'ESW Sync Delay', meta: 'Single Window integration is running 12 minutes behind', time: '14m ago', icon: '🔗', iconClass: 'ai-blue', route: 'integrations', unread: true },
-  { title: 'New Batch Commissioned', meta: '14,200 units serialized at Shelys Pharma', time: '1h ago', icon: '📦', iconClass: 'ai-green', route: 'epcis-events', unread: true },
-  { title: 'Low Stock Alert', meta: 'CHK Hospital has dropped below metformin threshold', time: '3h ago', icon: '⚠️', iconClass: 'ai-amber', route: 'inventory', unread: true },
-  { title: 'Recall Resolved', meta: 'Recall RW-2024-0405 fully closed and archived', time: '1d ago', icon: '✅', iconClass: 'ai-green', route: 'recalls' },
-  { title: 'API Rate Limit Warning', meta: 'Integration key rms-api-key approaching hourly limit', time: '2d ago', icon: '🔌', iconClass: 'ai-blue', route: 'api' },
-  { title: 'New Facility Onboarded', meta: 'Bugesera Health Center activated successfully', time: '3d ago', icon: '🏢', iconClass: 'ai-green', route: 'stakeholders' },
+  { title: 'Recall Initiated', meta: 'Amoxicillin 500mg recall broadcast to all facilities', time: '2h ago', icon: '\u{1F6A8}', iconClass: 'ai-red', route: 'recalls', unread: true },
+  { title: 'Counterfeit Flag CF-0041', meta: 'Serial not found in registry during Gasabo inspection', time: '4h ago', icon: '\u26A0\uFE0F', iconClass: 'ai-amber', route: 'counterfeit', unread: true },
+  { title: 'ESW Sync Delay', meta: 'Single Window integration is running 12 minutes behind', time: '14m ago', icon: '\u{1F517}', iconClass: 'ai-blue', route: 'integrations', unread: true },
+  { title: 'New Batch Commissioned', meta: '14,200 units serialized at Shelys Pharma', time: '1h ago', icon: '\u{1F4E6}', iconClass: 'ai-green', route: 'epcis-events', unread: true },
+  { title: 'Low Stock Alert', meta: 'CHK Hospital has dropped below metformin threshold', time: '3h ago', icon: '\u26A0\uFE0F', iconClass: 'ai-amber', route: 'inventory', unread: true },
+  { title: 'Recall Resolved', meta: 'Recall RW-2024-0405 fully closed and archived', time: '1d ago', icon: '\u2705', iconClass: 'ai-green', route: 'recalls' },
+  { title: 'API Rate Limit Warning', meta: 'Integration key rms-api-key approaching hourly limit', time: '2d ago', icon: '\u{1F50C}', iconClass: 'ai-blue', route: 'api' },
+  { title: 'New Facility Onboarded', meta: 'Bugesera Health Center activated successfully', time: '3d ago', icon: '\u{1F3E2}', iconClass: 'ai-green', route: 'stakeholders' },
 ];
 
 export const integrations: IntegrationStatus[] = [
@@ -162,10 +162,10 @@ export const integrations: IntegrationStatus[] = [
 ];
 
 export const journey: JourneyStep[] = [
-  { icon: '🏭', borderColor: 'var(--accent2)', title: 'Commissioning Event', description: 'Serialized at Shelys Pharma · Batch #SP-2026-041', time: '09 Apr · 08:14' },
-  { icon: '📦', borderColor: 'var(--accent)', title: 'Shipping Event', description: 'Transferred to RMS Warehouse · Kicukiro', time: '09 Apr · 09:02' },
-  { icon: '🏬', borderColor: 'var(--accent3)', title: 'Receiving Event', description: 'Accepted at Kigali Pharmacy Plus · Nyarugenge', time: '09 Apr · 10:11' },
-  { icon: '💊', borderColor: 'var(--purple)', title: 'Dispensing Event', description: 'Dispensed to patient at CHK · Rx #RX-9901', time: '09 Apr · 10:24' },
+  { icon: '\u{1F3ED}', borderColor: 'var(--accent2)', title: 'Commissioning Event', description: 'Serialized at Shelys Pharma \u00B7 Batch #SP-2026-041', time: '09 Apr \u00B7 08:14' },
+  { icon: '\u{1F4E6}', borderColor: 'var(--accent)', title: 'Shipping Event', description: 'Transferred to RMS Warehouse \u00B7 Kicukiro', time: '09 Apr \u00B7 09:02' },
+  { icon: '\u{1F3EC}', borderColor: 'var(--accent3)', title: 'Receiving Event', description: 'Accepted at Kigali Pharmacy Plus \u00B7 Nyarugenge', time: '09 Apr \u00B7 10:11' },
+  { icon: '\u{1F48A}', borderColor: 'var(--purple)', title: 'Dispensing Event', description: 'Dispensed to patient at CHK \u00B7 Rx #RX-9901', time: '09 Apr \u00B7 10:24' },
 ];
 
 export const sparkValues = [35, 52, 48, 65, 60, 80, 92];
@@ -243,12 +243,12 @@ export const onboardingProgress: BarMetric[] = [
 ];
 
 export const inventoryRows: InventoryRow[] = [
-  { facility: 'Kigali Pharmacy Plus', facilityType: 'Retail Pharmacy', product: 'Amoxicillin 500mg', quantity: '1,240', batch: 'SP-2026-041', expiry: 'Dec 2027', lastMovement: '09 Apr · 10:11', status: 'active' },
-  { facility: 'RMS Central Warehouse', facilityType: 'Distributor', product: 'Paracetamol 1g', quantity: '42,800', batch: 'UC-2026-081', expiry: 'Jun 2028', lastMovement: '09 Apr · 09:02', status: 'active' },
-  { facility: 'CHK Hospital', facilityType: 'Public Hospital', product: 'Metformin 850mg', quantity: '312', batch: 'RW-2026-003', expiry: 'Mar 2027', lastMovement: '09 Apr · 09:58', status: 'hold' },
-  { facility: 'Gasabo HC', facilityType: 'Health Center', product: 'Ibuprofen 400mg', quantity: '0', batch: 'AF-2024-015', expiry: '—', lastMovement: '08 Apr · 17:30', status: 'recalled' },
-  { facility: 'Remera Pharmacy', facilityType: 'Retail Pharmacy', product: 'Amoxicillin 250mg', quantity: '880', batch: 'SP-2026-039', expiry: 'Nov 2027', lastMovement: '09 Apr · 08:45', status: 'active' },
-  { facility: 'Muhima Hospital', facilityType: 'Public Hospital', product: 'Artemether 80mg', quantity: '4,100', batch: 'AM-2026-007', expiry: 'Aug 2027', lastMovement: '08 Apr · 14:22', status: 'active' },
+  { facility: 'Kigali Pharmacy Plus', facilityType: 'Retail Pharmacy', product: 'Amoxicillin 500mg', quantity: '1,240', batch: 'SP-2026-041', expiry: 'Dec 2027', lastMovement: '09 Apr \u00B7 10:11', status: 'active' },
+  { facility: 'RMS Central Warehouse', facilityType: 'Distributor', product: 'Paracetamol 1g', quantity: '42,800', batch: 'UC-2026-081', expiry: 'Jun 2028', lastMovement: '09 Apr \u00B7 09:02', status: 'active' },
+  { facility: 'CHK Hospital', facilityType: 'Public Hospital', product: 'Metformin 850mg', quantity: '312', batch: 'RW-2026-003', expiry: 'Mar 2027', lastMovement: '09 Apr \u00B7 09:58', status: 'hold' },
+  { facility: 'Gasabo HC', facilityType: 'Health Center', product: 'Ibuprofen 400mg', quantity: '0', batch: 'AF-2024-015', expiry: '\u2014', lastMovement: '08 Apr \u00B7 17:30', status: 'recalled' },
+  { facility: 'Remera Pharmacy', facilityType: 'Retail Pharmacy', product: 'Amoxicillin 250mg', quantity: '880', batch: 'SP-2026-039', expiry: 'Nov 2027', lastMovement: '09 Apr \u00B7 08:45', status: 'active' },
+  { facility: 'Muhima Hospital', facilityType: 'Public Hospital', product: 'Artemether 80mg', quantity: '4,100', batch: 'AM-2026-007', expiry: 'Aug 2027', lastMovement: '08 Apr \u00B7 14:22', status: 'active' },
 ];
 
 export const recallRows: RecallRow[] = [
@@ -258,25 +258,25 @@ export const recallRows: RecallRow[] = [
 ];
 
 export const verificationHistory = [
-  ['0614141.107346.2017', 'Amoxicillin 500mg', 'FDA Inspector', 'Authentic', '09 Apr · 10:24'],
-  ['0614141.034215.9831', 'Paracetamol 1g', 'Kigali Pharmacy+', 'Authentic', '09 Apr · 09:58'],
-  ['0614141.500122.4400', 'Metformin 850mg', 'RMS Officer', 'On Hold', '09 Apr · 09:44'],
-  ['0614141.104700.0019', 'Ibuprofen 400mg', 'CHK Hospital', 'Recalled', '08 Apr · 17:30'],
-  ['0614141.777890.0052', 'Artemether 80mg', 'Musanze HC', 'Authentic', '08 Apr · 14:12'],
+  ['0614141.107346.2017', 'Amoxicillin 500mg', 'FDA Inspector', 'Authentic', '09 Apr \u00B7 10:24'],
+  ['0614141.034215.9831', 'Paracetamol 1g', 'Kigali Pharmacy+', 'Authentic', '09 Apr \u00B7 09:58'],
+  ['0614141.500122.4400', 'Metformin 850mg', 'RMS Officer', 'On Hold', '09 Apr \u00B7 09:44'],
+  ['0614141.104700.0019', 'Ibuprofen 400mg', 'CHK Hospital', 'Recalled', '08 Apr \u00B7 17:30'],
+  ['0614141.777890.0052', 'Artemether 80mg', 'Musanze HC', 'Authentic', '08 Apr \u00B7 14:12'],
 ] as const;
 
 export const integrationCards = [
-  { icon: '🏭', label: 'Manufacturers', count: '12', color: '#1a4fdb' },
-  { icon: '✈️', label: 'Importers', count: '38', color: '#0a7c55' },
-  { icon: '🏬', label: 'Wholesalers', count: '170', color: '#c94a18' },
-  { icon: '💊', label: 'Pharmacies', count: '853', color: '#a16207' },
-  { icon: '🏥', label: 'Health Facilities', count: '950', color: '#5b21b6' },
+  { icon: '\u{1F3ED}', label: 'Manufacturers', count: '12', color: '#1a4fdb' },
+  { icon: '\u2708\uFE0F', label: 'Importers', count: '38', color: '#0a7c55' },
+  { icon: '\u{1F3EC}', label: 'Wholesalers', count: '170', color: '#c94a18' },
+  { icon: '\u{1F48A}', label: 'Pharmacies', count: '853', color: '#a16207' },
+  { icon: '\u{1F3E5}', label: 'Health Facilities', count: '950', color: '#5b21b6' },
 ] as const;
 
 export const serializationStats: StatCard[] = [
-  { label: 'GTINs Registered', value: '4,218', delta: 'Active catalog', tone: 'delta-up', icon: '📋' },
-  { label: 'Serial Ranges Issued', value: '1.2M', delta: 'Across all manufacturers', tone: 'delta-up', icon: '🔢' },
-  { label: 'Pending Activation', value: '34,880', delta: 'Awaiting commissioning', tone: 'delta-warn', icon: '⏳' },
+  { label: 'GTINs Registered', value: '4,218', delta: 'Active catalog', tone: 'delta-up', icon: '\u{1F4CB}' },
+  { label: 'Serial Ranges Issued', value: '1.2M', delta: 'Across all manufacturers', tone: 'delta-up', icon: '\u{1F522}' },
+  { label: 'Pending Activation', value: '34,880', delta: 'Awaiting commissioning', tone: 'delta-warn', icon: '\u23F3' },
 ];
 
 export const serializationRows = [
@@ -288,17 +288,17 @@ export const serializationRows = [
 ] as const;
 
 export const dispensingRows = [
-  ['RX-9901', 'Amoxicillin 500mg', '0614141.290001.1102', 'CHK Hospital', 'PAT-****4821', '09 Apr · 10:24', 'EMR (OpenMRS)'],
-  ['RX-9900', 'Paracetamol 1g', '0614141.034215.9831', 'Kigali Pharmacy+', 'PAT-****3309', '09 Apr · 09:58', 'POS System'],
-  ['RX-9899', 'Metformin 850mg', '0614141.107346.2017', 'Muhima Hospital', 'PAT-****7712', '09 Apr · 08:45', 'EMR (eBuzima)'],
-  ['RX-9898', 'Artemether 80mg', '0614141.201100.0330', 'Remera Pharmacy', 'PAT-****1190', '08 Apr · 16:30', 'POS System'],
-  ['RX-9897', 'Ibuprofen 400mg', '0614141.110200.6611', 'Bugesera HC', 'PAT-****5534', '08 Apr · 14:00', 'HPEMR'],
+  ['RX-9901', 'Amoxicillin 500mg', '0614141.290001.1102', 'CHK Hospital', 'PAT-****4821', '09 Apr \u00B7 10:24', 'EMR (OpenMRS)'],
+  ['RX-9900', 'Paracetamol 1g', '0614141.034215.9831', 'Kigali Pharmacy+', 'PAT-****3309', '09 Apr \u00B7 09:58', 'POS System'],
+  ['RX-9899', 'Metformin 850mg', '0614141.107346.2017', 'Muhima Hospital', 'PAT-****7712', '09 Apr \u00B7 08:45', 'EMR (eBuzima)'],
+  ['RX-9898', 'Artemether 80mg', '0614141.201100.0330', 'Remera Pharmacy', 'PAT-****1190', '08 Apr \u00B7 16:30', 'POS System'],
+  ['RX-9897', 'Ibuprofen 400mg', '0614141.110200.6611', 'Bugesera HC', 'PAT-****5534', '08 Apr \u00B7 14:00', 'HPEMR'],
 ] as const;
 
 export const stakeholderStats: StatCard[] = [
-  { label: 'Retail Pharmacies', value: '853', delta: '91% coverage', tone: 'delta-up', icon: '🏪' },
-  { label: 'Health Facilities', value: '950', delta: '84% active', tone: 'delta-up', icon: '🏥' },
-  { label: 'Wholesalers & Dist.', value: '170', delta: '94% active', tone: 'delta-up', icon: '🏬' },
+  { label: 'Retail Pharmacies', value: '853', delta: '91% coverage', tone: 'delta-up', icon: '\u{1F3EA}' },
+  { label: 'Health Facilities', value: '950', delta: '84% active', tone: 'delta-up', icon: '\u{1F3E5}' },
+  { label: 'Wholesalers & Dist.', value: '170', delta: '94% active', tone: 'delta-up', icon: '\u{1F3EC}' },
 ];
 
 export const stakeholderRows = [
@@ -329,25 +329,25 @@ export const counterfeitRows = [
 ] as const;
 
 export const auditRows = [
-  ['09 Apr · 10:24', 'oliver.uwantege', 'VIEW_EVENTS', 'EPCIS Events', 'Viewed event log - 10 records', '196.49.12.4', 'Success'],
-  ['09 Apr · 10:19', 'rms.api', 'POST_EVENT', 'API', 'Aggregation event submitted - EVT-8840', '10.0.0.8', 'Success'],
-  ['09 Apr · 09:44', 'fda.inspector', 'FLAG_PRODUCT', 'Counterfeit', 'Flagged GTIN 0614141.5001 - Gasabo', '196.49.33.7', 'Success'],
-  ['09 Apr · 09:30', 'unknown', 'LOGIN_FAIL', 'Authentication', '3 failed attempts - locked out', '102.23.45.9', 'Failed'],
-  ['09 Apr · 09:02', 'rms.api', 'POST_EVENT', 'API', 'Commissioning event - EVT-8839', '10.0.0.8', 'Success'],
-  ['08 Apr · 17:30', 'fda.admin', 'INITIATE_RECALL', 'Recall Mgmt', 'Recall RW-2024-0412 initiated', '196.49.12.5', 'Success'],
-  ['08 Apr · 14:20', 'oliver.uwantege', 'LOGIN', 'Authentication', 'Session started', '196.49.12.4', 'Success'],
-  ['08 Apr · 11:10', 'j.nkurunziza', 'UPDATE_STOCK', 'Inventory', 'Stock adjusted - AfriMed Musanze', '10.0.2.11', 'Success'],
+  ['09 Apr \u00B7 10:24', 'oliver.uwantege', 'VIEW_EVENTS', 'EPCIS Events', 'Viewed event log - 10 records', '196.49.12.4', 'Success'],
+  ['09 Apr \u00B7 10:19', 'rms.api', 'POST_EVENT', 'API', 'Aggregation event submitted - EVT-8840', '10.0.0.8', 'Success'],
+  ['09 Apr \u00B7 09:44', 'fda.inspector', 'FLAG_PRODUCT', 'Counterfeit', 'Flagged GTIN 0614141.5001 - Gasabo', '196.49.33.7', 'Success'],
+  ['09 Apr \u00B7 09:30', 'unknown', 'LOGIN_FAIL', 'Authentication', '3 failed attempts - locked out', '102.23.45.9', 'Failed'],
+  ['09 Apr \u00B7 09:02', 'rms.api', 'POST_EVENT', 'API', 'Commissioning event - EVT-8839', '10.0.0.8', 'Success'],
+  ['08 Apr \u00B7 17:30', 'fda.admin', 'INITIATE_RECALL', 'Recall Mgmt', 'Recall RW-2024-0412 initiated', '196.49.12.5', 'Success'],
+  ['08 Apr \u00B7 14:20', 'oliver.uwantege', 'LOGIN', 'Authentication', 'Session started', '196.49.12.4', 'Success'],
+  ['08 Apr \u00B7 11:10', 'j.nkurunziza', 'UPDATE_STOCK', 'Inventory', 'Stock adjusted - AfriMed Musanze', '10.0.2.11', 'Success'],
 ] as const;
 
 export const regulatoryReports = [
-  ['📊', 'Monthly Traceability Report', 'Full product movement summary for regulatory submission to Rwanda FDA', 'Generate PDF'],
-  ['🚨', 'Recall Status Report', 'Status of all active and resolved recall events with audit trail', 'Generate PDF'],
-  ['🛡️', 'Counterfeit Incident Report', 'Flagged, investigated, and confirmed counterfeit incidents summary', 'Generate CSV'],
-  ['📦', 'Supply Chain Coverage Report', 'Facility onboarding and nationwide coverage metrics by district', 'Generate PDF'],
-  ['🔗', 'Integration Health Report', 'Status and performance of all 6 connected external systems', 'Generate CSV'],
-  ['📋', 'Serialization Utilization Report', 'GTIN registration, serial range usage, and activation rates', 'Generate PDF'],
-  ['📈', 'Performance Analytics Report', 'Transaction volumes, event types, and trend analysis over period', 'Generate Excel'],
-  ['🏥', 'Dispensing Summary Report', 'Aggregated dispensing data by facility, product, and region', 'Generate PDF'],
+  ['\u{1F4CA}', 'Monthly Traceability Report', 'Full product movement summary for regulatory submission to Rwanda FDA', 'Generate PDF'],
+  ['\u{1F6A8}', 'Recall Status Report', 'Status of all active and resolved recall events with audit trail', 'Generate PDF'],
+  ['\u{1F6E1}\uFE0F', 'Counterfeit Incident Report', 'Flagged, investigated, and confirmed counterfeit incidents summary', 'Generate CSV'],
+  ['\u{1F4E6}', 'Supply Chain Coverage Report', 'Facility onboarding and nationwide coverage metrics by district', 'Generate PDF'],
+  ['\u{1F517}', 'Integration Health Report', 'Status and performance of all 6 connected external systems', 'Generate CSV'],
+  ['\u{1F4CB}', 'Serialization Utilization Report', 'GTIN registration, serial range usage, and activation rates', 'Generate PDF'],
+  ['\u{1F4C8}', 'Performance Analytics Report', 'Transaction volumes, event types, and trend analysis over period', 'Generate Excel'],
+  ['\u{1F3E5}', 'Dispensing Summary Report', 'Aggregated dispensing data by facility, product, and region', 'Generate PDF'],
 ] as const;
 
 export const users: UserRecord[] = [
