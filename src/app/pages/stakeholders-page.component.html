@@ -1,0 +1,70 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Stakeholder Registry</div>
+    <div class="ph-sub">Registered facilities across Rwanda's pharmaceutical ecosystem with status and last activity visibility.</div>
+  </div>
+  <app-stat-grid [items]="stats"></app-stat-grid>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Stakeholder Registry</div>
+        <div class="card-sub">Registered facilities across Rwanda's pharmaceutical ecosystem</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" (click)="exportStakeholders()">⬇ Export</button>
+        <button class="btn btn-primary btn-sm" (click)="registerFacility()">+ Register Facility</button>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Facility Name</th><th>Type</th><th>District</th><th>GLN</th><th>Coverage</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row[0]) {
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td><span class="epc">{{ row[3] }}</span></td>
+            <td>
+              <div style="display:flex;align-items:center;gap:7px">
+                <div style="flex:1;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;width:60px">
+                  <div style="height:100%;border-radius:3px" [style.width.%]="row[4]" [style.background]="row[4] === 100 ? 'var(--accent)' : row[4] > 70 ? 'var(--accent2)' : row[4] > 0 ? 'var(--warn)' : 'var(--danger)'"></div>
+                </div>
+                <span style="font-size:10px;color:var(--muted)">{{ row[4] }}%</span>
+              </div>
+            </td>
+            <td><span class="badge" [class]="badgeClass(row[5])">{{ row[5] }}</span></td>
+            <td><button class="btn btn-ghost btn-xs" (click)="exportStakeholders()">View</button></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (showRegisterModal()) {
+    <div class="modal-overlay" style="display:flex" (click)="closeRegisterModal()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <div class="modal-hdr">
+          <div class="modal-title">Register Facility</div>
+          <div class="modal-close" (click)="closeRegisterModal()">×</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-field"><label>Facility Name</label><input type="text" value="Bugesera Health Center"></div>
+          <div class="form-row">
+            <div class="form-field"><label>Type</label><select><option>Health Center</option><option>Retail Pharmacy</option><option>Distributor</option></select></div>
+            <div class="form-field"><label>District</label><input type="text" value="Bugesera"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>GLN</label><input type="text" value="0614141000008"></div>
+            <div class="form-field"><label>Coverage Target</label><input type="number" value="74"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm" (click)="closeRegisterModal()">Cancel</button>
+            <button class="btn btn-primary btn-sm" (click)="submitRegisterFacility()">Register Facility</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

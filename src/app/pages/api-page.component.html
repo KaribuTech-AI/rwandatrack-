@@ -1,0 +1,60 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">API Console</div>
+    <div class="ph-sub">Test EPCIS endpoints, inspect requests and responses, and validate integration behavior against the original dashboard workflow.</div>
+  </div>
+
+  <div class="grid-2">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-title">API Request Builder</div>
+          <span class="badge b-green">Base URL: api.rwandatrack.rw/v1</span>
+        </div>
+        <div style="padding:16px 18px">
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <select class="control-select control-select-code" [ngModel]="method()" (ngModelChange)="method.set($event)" style="width:90px">
+              <option>POST</option>
+              <option>GET</option>
+              <option>PUT</option>
+              <option>DELETE</option>
+            </select>
+            <input class="control-input control-input-code" [ngModel]="endpoint()" (ngModelChange)="endpoint.set($event)" type="text" style="flex:1">
+            <button class="btn btn-blue" (click)="runApi()">Send →</button>
+          </div>
+          <div class="section-note" style="margin-bottom:6px">Request Body</div>
+          <div class="code-block">{{ requestBody() }}</div>
+          <div class="section-note" style="margin:12px 0 6px">Response</div>
+          <div class="code-block code-response">{{ response() }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr"><div class="card-title">Quick Endpoints</div></div>
+        <div style="padding:10px 18px">
+          @for (item of quickEndpoints; track item[1]) {
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer" (click)="selectEndpoint(item[0], item[1])">
+              <span style="font-size:9px;padding:2px 6px;border-radius:4px;font-weight:700;color:#fff" [style.background]="item[0] === 'GET' ? '#0a7c55' : item[0] === 'POST' ? '#1a4fdb' : item[0] === 'PUT' ? '#a16207' : '#c82020'">{{ item[0] }}</span>
+              <span class="endpoint-path">{{ item[1] }}</span>
+              <span class="metric-subtext">{{ item[2] }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr"><div class="card-title">API Health</div></div>
+        <div style="padding:12px 18px">
+          @for (item of apiHealth; track item[0]) {
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px">
+              <span style="color:var(--muted)">{{ item[0] }}</span>
+              <span class="numeric-strong" [style.color]="item[2]">{{ item[1] }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

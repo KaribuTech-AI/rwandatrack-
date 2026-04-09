@@ -1,0 +1,76 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <div class="ph-title" style="margin-bottom:2px">Recall Management</div>
+        <div class="ph-sub" style="margin-bottom:0">2 active recalls · 3 resolved this week</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" (click)="exportRecalls()">⬇ Export</button>
+        <button class="btn btn-danger" (click)="initiateRecall()">+ Initiate Recall</button>
+      </div>
+    </div>
+  </div>
+  <div class="grid-2">
+    @for (card of activeCards; track card[0]) {
+      <div style="background:var(--danger-light);border:1px solid rgba(200,32,32,.2);border-radius:12px;padding:18px">
+        <div style="font-size:10px;font-weight:700;color:var(--danger);margin-bottom:8px">ACTIVE RECALL · {{ card[0] }}</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">{{ card[1] }} - Batch {{ card[2] }}</div>
+        <div style="font-size:10.5px;color:var(--muted);margin-bottom:12px">{{ card[3] }} units affected · {{ card[4] }} · Initiated {{ card[5] }}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-danger btn-sm" (click)="initiateRecall()">Track Units</button>
+          <button class="btn btn-ghost btn-sm" (click)="exportRecalls()">Resend Alert</button>
+          <button class="btn btn-ghost btn-sm" (click)="exportRecalls()">Mark Resolved</button>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Recall Tracker</div>
+        <div class="card-sub">Current and recently closed regulatory actions</div>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Recall ID</th><th>Product</th><th>Batch</th><th>Units</th><th>Scope</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row.id) {
+          <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.product }}</td>
+            <td>{{ row.batch }}</td>
+            <td>{{ row.units }}</td>
+            <td>{{ row.scope }}</td>
+            <td><span class="badge" [class]="badgeClass(row.status)">{{ row.status }}</span></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (showRecallModal()) {
+    <div class="modal-overlay" style="display:flex" (click)="closeRecallModal()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <div class="modal-hdr">
+          <div class="modal-title">Initiate Recall</div>
+          <div class="modal-close" (click)="closeRecallModal()">×</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-field"><label>Product Name</label><input type="text" value="Amoxicillin 500mg"></div>
+          <div class="form-row">
+            <div class="form-field"><label>Batch</label><input type="text" value="SP-2024-041"></div>
+            <div class="form-field"><label>Scope</label><select><option>Nationwide</option><option>Kigali Region</option></select></div>
+          </div>
+          <div class="form-field"><label>Reason</label><textarea>Quality issue detected during regulatory inspection.</textarea></div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm" (click)="closeRecallModal()">Cancel</button>
+            <button class="btn btn-danger btn-sm" (click)="submitRecall()">Initiate Recall</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

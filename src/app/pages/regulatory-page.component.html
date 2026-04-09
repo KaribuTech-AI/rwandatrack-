@@ -1,0 +1,21 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Regulatory Reports</div>
+    <div class="ph-sub">Generate, schedule, and download compliance reports for Rwanda FDA, Ministry of Health, and partner institutions.</div>
+  </div>
+  <div class="grid-2">
+    @for (report of reports; track report[1]) {
+      <div style="border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;align-items:flex-start;gap:13px;background:var(--surface)">
+        <div style="font-size:24px;flex-shrink:0">{{ report[0] }}</div>
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">{{ report[1] }}</div>
+          <div style="font-size:10px;color:var(--muted);margin-bottom:12px">{{ report[2] }}</div>
+          <div style="display:flex;gap:7px">
+            <button class="btn btn-primary btn-xs" (click)="generate(report[3])">⬇ {{ report[3] }}</button>
+            <button class="btn btn-ghost btn-xs" (click)="schedule(report[1])">Schedule</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

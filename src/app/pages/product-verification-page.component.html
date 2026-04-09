@@ -1,0 +1,41 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Product Verification</div>
+    <div class="ph-sub">Enter a GTIN, serial number, or EPC code to verify product authenticity and trace its full journey.</div>
+    <div style="display:flex;gap:9px;margin-bottom:16px">
+      <input class="control-input control-input-code" [ngModel]="verifyInput()" (ngModelChange)="verifyInput.set($event)" (keyup.enter)="runVerification()" type="text" placeholder="urn:epc:id:sgtin:0614141.107346.2017 or GTIN + Serial Number" style="flex:1;font-size:12px;padding:10px 13px">
+      <button class="btn btn-primary" (click)="runVerification()">Verify →</button>
+      <button class="btn btn-ghost" (click)="runVerification('urn:epc:id:sgtin:0614141.107346.2017')">Try Sample</button>
+    </div>
+    @if (verifyResult(); as result) {
+      <div [class]="resultClass(result.tone)" style="display:block">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px">{{ result.title }}</div>
+        <div style="font-size:11.5px;color:var(--text);margin-bottom:6px">{{ result.body }}</div>
+        <div style="font-size:10.5px;color:var(--muted)">{{ result.detail }}</div>
+      </div>
+    }
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-title">Recent Verification History</div>
+      <span class="badge b-blue">Today</span>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>EPC Code</th><th>Product</th><th>Verified By</th><th>Result</th><th>Timestamp</th></tr>
+      </thead>
+      <tbody>
+        @for (row of history; track row[0]) {
+          <tr (click)="runVerification('urn:epc:id:sgtin:' + row[0])">
+            <td><span class="epc">{{ row[0] }}</span></td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

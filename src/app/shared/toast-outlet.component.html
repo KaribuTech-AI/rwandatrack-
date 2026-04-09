@@ -1,0 +1,13 @@
+<div class="toast-area">
+  @for (toast of ui.toasts(); track toast.id) {
+    <div class="toast">
+      <div class="toast-strip" [style.background]="toast.color"></div>
+      <div class="toast-icon">{{ toast.icon }}</div>
+      <div class="toast-body">
+        <div class="toast-title">{{ toast.title }}</div>
+        <div class="toast-sub">{{ toast.sub }}</div>
+      </div>
+      <button class="toast-x" type="button" (click)="ui.dismissToast(toast.id)">×</button>
+    </div>
+  }
+</div>

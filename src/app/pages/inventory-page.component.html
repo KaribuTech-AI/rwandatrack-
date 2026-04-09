@@ -1,0 +1,38 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Inventory Tracking</div>
+    <div class="ph-sub">Real-time visibility into stock positions, expiry risk, and recent movement across connected facilities.</div>
+  </div>
+  <app-stat-grid [items]="stats"></app-stat-grid>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Inventory Tracking</div>
+        <div class="card-sub">Real-time stock levels across registered facilities</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" (click)="exportInventory()">⬇ Export</button>
+        <button class="btn btn-primary btn-sm" (click)="logMovement()">+ Log Movement</button>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Facility</th><th>Type</th><th>Product</th><th>Qty on Hand</th><th>Batch</th><th>Expiry</th><th>Last Movement</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row.facility + row.product) {
+          <tr>
+            <td>{{ row.facility }}</td>
+            <td>{{ row.facilityType }}</td>
+            <td>{{ row.product }}</td>
+            <td>{{ row.quantity }}</td>
+            <td><span class="epc" style="font-size:9.5px">{{ row.batch }}</span></td>
+            <td>{{ row.expiry }}</td>
+            <td>{{ row.lastMovement }}</td>
+            <td><span class="badge" [class]="badgeClass(row.status)">{{ row.status }}</span></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

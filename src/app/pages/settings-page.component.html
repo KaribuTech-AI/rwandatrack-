@@ -1,0 +1,74 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Settings</div>
+    <div class="ph-sub">Manage system behavior, notification preferences, and account defaults for RwandaTrack operations.</div>
+  </div>
+  <div class="grid-2">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">System Configuration</div>
+            <div class="card-sub">Core operational switches for traceability and notifications</div>
+          </div>
+        </div>
+        <div style="padding:20px">
+          @for (setting of settings(); track setting.title; let i = $index) {
+            <div class="setting-row">
+              <div>
+                <div class="sr-label">{{ setting.title }}</div>
+                <div class="sr-sub">{{ setting.description }}</div>
+              </div>
+              <button class="btn btn-sm" [class]="setting.enabled ? 'btn-primary' : 'btn-ghost'" (click)="toggleSetting(i)">{{ setting.enabled ? 'Enabled' : 'Disabled' }}</button>
+            </div>
+          }
+          <div style="display:flex;gap:8px;padding-top:14px;margin-top:4px;border-top:1px solid var(--border)">
+            <button class="btn btn-primary" (click)="saveSettings()">Save Changes</button>
+            <button class="btn btn-ghost" (click)="resetDefaults()">Reset to Defaults</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">Profile</div>
+            <div class="card-sub">Personal preferences and operator identity</div>
+          </div>
+        </div>
+        <div style="padding:20px">
+          <div class="form-field"><label>Full Name</label><input type="text" value="Oliver Uwantege"></div>
+          <div class="form-field"><label>Email</label><input type="email" value="oliver.uwantege@enabel.be"></div>
+          <div class="form-field"><label>Role</label><input type="text" value="Business Analyst - eHealth" readonly></div>
+          <div class="form-field"><label>Notification Language</label><select><option>English</option><option>Kinyarwanda</option><option>French</option></select></div>
+          <div style="display:flex;gap:8px;margin-top:4px">
+            <button class="btn btn-primary btn-sm" (click)="saveProfile()">Save Profile</button>
+            <button class="btn btn-ghost btn-sm" (click)="changePassword()">Change Password</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">System Info</div>
+            <div class="card-sub">Deployment and environment snapshot</div>
+          </div>
+        </div>
+        <div style="padding:18px 20px">
+          @for (item of systemInfo; track item[0]) {
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px">
+              <span style="color:var(--muted)">{{ item[0] }}</span>
+              <span style="color:var(--text);font-weight:500">{{ item[1] }}</span>
+            </div>
+          }
+          <div style="margin-top:12px">
+            <button class="btn btn-ghost btn-sm" (click)="runDiagnostics()">Run System Diagnostics</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

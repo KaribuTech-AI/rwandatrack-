@@ -1,0 +1,26 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Supply Chain Map</div>
+    <div class="ph-sub">Live geographic movement of pharmaceutical products across Rwanda's distribution network</div>
+    <app-mini-map [dots]="mapDots" height="320px" caption="Rwanda — 5 Provinces · 30 Districts tracked"></app-mini-map>
+    <div class="grid-3" style="grid-template-columns:repeat(5,1fr);margin-top:18px">
+      @for (item of integrationCards; track item.label) {
+        <div style="background:var(--surface3);border:1px solid var(--border);border-radius:9px;padding:14px;text-align:center;cursor:pointer" (click)="navigate('stakeholders')">
+          <div style="font-size:22px;margin-bottom:6px">{{ item.icon }}</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px" [style.color]="item.color">{{ item.count }}</div>
+          <div style="font-size:9.5px;color:var(--muted)">{{ item.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-hdr"><div class="card-title">Province Coverage</div></div>
+      <app-bar-metrics [items]="provinceCoverage"></app-bar-metrics>
+    </div>
+    <div class="card">
+      <div class="card-hdr"><div class="card-title">Live Movement Stats</div></div>
+      <app-bar-metrics [items]="liveMovementStats" labelWidth="160px" valueWidth="70px"></app-bar-metrics>
+    </div>
+  </div>
+</div>

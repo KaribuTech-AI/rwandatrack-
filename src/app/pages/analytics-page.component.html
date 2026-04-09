@@ -1,0 +1,39 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Analytics &amp; Reports</div>
+    <div class="ph-sub">Transaction trends, performance metrics, and supply chain health indicators</div>
+    <div class="kpi-row">
+      @for (item of analyticsKpis; track item.label) {
+        <div class="kpi-box">
+          <div class="kpi-lbl">{{ item.label }}</div>
+          <div class="kpi-val">{{ item.value }}</div>
+          <div class="kpi-delta" style="color:var(--accent2)">{{ item.delta }}</div>
+        </div>
+      }
+    </div>
+    <app-bar-metrics [items]="analyticsBars" labelWidth="160px" valueWidth="70px"></app-bar-metrics>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-hdr"><div class="card-title">Stakeholder Onboarding Progress</div></div>
+      <app-bar-metrics [items]="onboardingProgress" labelWidth="150px" valueWidth="60px"></app-bar-metrics>
+    </div>
+    <div class="card">
+      <div class="card-hdr"><div class="card-title">Weekly Trend</div><div style="font-size:10px;color:var(--muted)">Events logged per day</div></div>
+      <div class="spark-wrap">
+        @for (height of sparkValues; track $index) {
+          <div class="spark-bar" [class.sp-today]="$last" [style.height.%]="height"></div>
+        }
+      </div>
+      <div class="spark-days">
+        @for (day of sparkDays; track day) {
+          <span class="spark-day">{{ day }}</span>
+        }
+      </div>
+      <div style="padding:10px 18px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" (click)="exportReport()">⬇ Export Report</button>
+        <button class="btn btn-primary btn-sm" (click)="navigate('regulatory')">Generate Regulatory PDF →</button>
+      </div>
+    </div>
+  </div>
+</div>

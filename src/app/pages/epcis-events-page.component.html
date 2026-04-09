@@ -1,0 +1,29 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">EPCIS Event Log</div>
+    <div class="ph-sub">Full supply chain event history in GS1 EPCIS 2.0 format with filtering and export controls.</div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">EPCIS Event Log</div>
+        <div class="card-sub">Full supply chain event history in GS1 EPCIS 2.0 format</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select class="control-select" [ngModel]="filter()" (ngModelChange)="filter.set($event)" style="padding:6px 10px;font-size:10.5px">
+          <option>All Types</option>
+          <option>Commissioning</option>
+          <option>Aggregation</option>
+          <option>Shipping</option>
+          <option>Receiving</option>
+          <option>Dispensing</option>
+          <option>Recall - Batch</option>
+          <option>Hold / Suspect</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" (click)="exportEvents()">⬇ Export</button>
+        <button class="btn btn-primary btn-sm" (click)="logEvent()">+ Log Event</button>
+      </div>
+    </div>
+    <app-events-table [rows]="rows()"></app-events-table>
+  </div>
+</div>

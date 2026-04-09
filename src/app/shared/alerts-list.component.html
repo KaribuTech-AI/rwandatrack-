@@ -1,0 +1,10 @@
+@for (item of items(); track item.title + item.time) {
+  <div class="alert-item" [style.background]="item.unread ? 'rgba(10,124,85,.03)' : ''" (click)="navigate.emit(item.route)">
+    <div class="ai-icon" [class]="item.iconClass">{{ item.icon }}</div>
+    <div class="ai-body">
+      <div class="ai-title">{{ item.title }}</div>
+      <div class="ai-meta">{{ item.meta }}</div>
+    </div>
+    <div class="ai-time">{{ item.time }}</div>
+  </div>
+}

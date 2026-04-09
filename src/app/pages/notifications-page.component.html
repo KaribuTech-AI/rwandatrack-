@@ -1,0 +1,19 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Notification Center</div>
+    <div class="ph-sub">Operational alerts, regulatory signals, and system notices across the traceability network.</div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Notification Center</div>
+        <div class="card-sub">Unread notifications and recent system activity</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" (click)="markAllRead()">Mark All Read</button>
+        <button class="btn btn-ghost btn-sm" (click)="navigate('settings')">Alert Settings</button>
+      </div>
+    </div>
+    <app-alerts-list [items]="items()" (navigate)="navigate($event)"></app-alerts-list>
+  </div>
+</div>

@@ -1,0 +1,170 @@
+<div class="page-wrap">
+  <app-stat-grid [items]="stats" [cardClick]="navigateFromStat.bind(this)"></app-stat-grid>
+
+  <div class="main-2col">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">Supply Chain Flow</div>
+            <div class="card-sub">Live pharmaceutical movement across Rwanda</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="pill pill-active">Live</span>
+            <span class="pill pill-inactive">7D</span>
+            <span class="pill pill-inactive">30D</span>
+            <button class="btn btn-ghost btn-sm" (click)="navigate('supply-chain-map')">Full Map →</button>
+          </div>
+        </div>
+        <div style="padding:18px 18px 14px">
+          <div class="chain-flow">
+            <div class="cn cn-mfr" (click)="showFlowInfo('Manufacturers', '12 registered manufacturers · 482,110 events this week')"><div class="cn-icon">🏭</div><div class="cn-label"><div class="cn-count">12</div>Manufacturers</div></div>
+            <div class="chain-arr"><span>→</span></div>
+            <div class="cn cn-imp" (click)="showFlowInfo('Importers', '38 importers · 98,400 import events this week')"><div class="cn-icon">✈️</div><div class="cn-label"><div class="cn-count">38</div>Importers</div></div>
+            <div class="chain-arr"><span>→</span></div>
+            <div class="cn cn-dist" (click)="showFlowInfo('Wholesalers', '170 wholesalers · 341,200 transfer events')"><div class="cn-icon">🏬</div><div class="cn-label"><div class="cn-count">170</div>Wholesalers</div></div>
+            <div class="chain-arr"><span>→</span></div>
+            <div class="cn cn-pharm" (click)="showFlowInfo('Pharmacies', '853 retail pharmacies · 91% coverage')"><div class="cn-icon">💊</div><div class="cn-label"><div class="cn-count">853</div>Pharmacies</div></div>
+            <div class="chain-arr"><span>→</span></div>
+            <div class="cn cn-hosp" (click)="showFlowInfo('Health Facilities', '950 facilities · 57 hospitals · 533 health centers')"><div class="cn-icon">🏥</div><div class="cn-label"><div class="cn-count">950</div>Health Facilities</div></div>
+          </div>
+          <div class="int-tags">
+            @for (integration of integrations; track integration.name) {
+              <div class="int-tag" [class]="integrationTone(integration.status)" (click)="navigate('integrations')">
+                <div class="dot" [class]="integrationDot(integration.status)"></div>
+                {{ integration.name }}
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">Recent EPCIS Events</div>
+            <div class="card-sub">Live event stream across the supply chain</div>
+          </div>
+          <button class="btn btn-ghost btn-sm" (click)="navigate('epcis-events')">View All →</button>
+        </div>
+        <div class="tab-bar">
+          <div class="tab tab-active">All Events</div>
+          <div class="tab">Commissioning</div>
+          <div class="tab">Transfers</div>
+          <div class="tab">Dispensing</div>
+          <div class="tab">Recalls &amp; Holds</div>
+        </div>
+        <div style="overflow-x:auto">
+          <app-events-table [rows]="events" [compact]="true"></app-events-table>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-title">Active Alerts</div>
+          <span class="badge b-red">7 open</span>
+        </div>
+        <app-alerts-list [items]="alerts" (navigate)="navigate($event)"></app-alerts-list>
+        <div style="padding:10px 16px;text-align:center">
+          <button class="btn btn-ghost btn-sm" style="width:100%" (click)="navigate('notifications')">View All Notifications →</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hdr">
+          <div>
+            <div class="card-title">Product Journey</div>
+            <div class="card-sub code-inline">0614141.107346.2017</div>
+          </div>
+          <button class="btn btn-ghost btn-sm" (click)="navigate('product-verification')">Trace →</button>
+        </div>
+        <div class="timeline">
+          @for (step of journey; track step.title) {
+            <div class="tl-item">
+              <div class="tl-dot" [style.borderColor]="step.borderColor">{{ step.icon }}</div>
+              <div class="tl-body">
+                <div class="tl-title">{{ step.title }}</div>
+                <div class="tl-desc">{{ step.description }}</div>
+                <div class="tl-time">{{ step.time }}</div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-3col">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="card-title">Transaction Volume</div>
+        <div class="metric-note">Events / day (this week)</div>
+      </div>
+      <div class="spark-wrap">
+        @for (height of sparkValues; track $index) {
+          <div class="spark-bar" [class.sp-today]="$last" [style.height.%]="height" [title]="sparkDays[$index] + ': ' + sparkEventCounts[$index] + ' events'" (click)="showTrendInfo(sparkDays[$index], sparkEventCounts[$index])"></div>
+        }
+      </div>
+      <div class="spark-days">
+        @for (day of sparkDays; track day) {
+          <span class="spark-day">{{ day }}</span>
+        }
+      </div>
+      <app-bar-metrics [items]="transactionBars"></app-bar-metrics>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr">
+        <div class="card-title">Stakeholder Coverage</div>
+        <button class="btn btn-ghost btn-sm" (click)="navigate('stakeholders')">Details →</button>
+      </div>
+      <div class="cov-list">
+        @for (item of stakeholderCoverage; track item.name) {
+          <div class="cov-item" (click)="navigate('stakeholders')">
+            <div class="cov-left">
+              <div class="cov-dot" [style.background]="item.color"></div>
+              <div>
+                <div class="cov-name">{{ item.name }}</div>
+                <div class="cov-sub">{{ item.sub }}</div>
+              </div>
+            </div>
+            <div class="cov-pct" [style.color]="item.color">{{ item.value }}</div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hdr">
+        <div class="card-title">Product Status</div>
+        <div class="metric-note">Live · 2.41M units</div>
+      </div>
+      <div class="donut-wrap">
+        <svg viewBox="0 0 100 100" width="105" height="105" style="flex-shrink:0">
+          <circle cx="50" cy="50" r="38" fill="none" stroke="var(--surface2)" stroke-width="15"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#0a7c55" stroke-width="15" stroke-dasharray="162.2 76.4" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#1a4fdb" stroke-width="15" stroke-dasharray="43 195.6" stroke-dashoffset="-162.2" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#5b21b6" stroke-width="15" stroke-dasharray="23.9 214.7" stroke-dashoffset="-205.2" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#c94a18" stroke-width="15" stroke-dasharray="9.5 229.1" stroke-dashoffset="-229.1" transform="rotate(-90 50 50)"/>
+          <text x="50" y="47" text-anchor="middle" fill="var(--text)" font-family="Syne,sans-serif" font-size="11" font-weight="800">2.41M</text>
+          <text x="50" y="58" text-anchor="middle" fill="#647892" font-family="system-ui,sans-serif" font-size="6.8" font-weight="600">Total Units</text>
+        </svg>
+        <div style="flex:1">
+          @for (item of productStatus; track item.label) {
+            <div class="legend-row" (click)="navigate('inventory')">
+              <div class="legend-dot" [style.background]="item.color"></div>
+              {{ item.label }}
+              <span class="legend-val" [style.color]="item.color">{{ item.value }}</span>
+            </div>
+          }
+        </div>
+      </div>
+      <div style="padding:0 18px 8px;border-top:1px solid var(--border);margin-top:4px">
+        <div class="section-lbl" style="padding-top:10px">Geographic Coverage</div>
+        <app-mini-map [dots]="mapDots"></app-mini-map>
+      </div>
+    </div>
+  </div>
+</div>

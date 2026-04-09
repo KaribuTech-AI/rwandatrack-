@@ -1,0 +1,15 @@
+<div class="bar-group">
+  @for (item of items(); track item.label) {
+    <div class="bar-row">
+      <div class="bar-lbl" [style.width]="labelWidth()">{{ item.label }}</div>
+      @if (item.width > 0) {
+        <div class="bar-track"><div class="bar-fill" [style.width.%]="item.width" [style.background]="item.color"></div></div>
+      } @else {
+        <div style="flex:1">
+          <div class="metric-subtext">{{ item.sublabel }}</div>
+        </div>
+      }
+      <div class="bar-val" [style.width]="valueWidth()" [style.color]="item.width === 0 ? item.color : 'var(--text)'">{{ item.value }}</div>
+    </div>
+  }
+</div>

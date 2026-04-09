@@ -1,0 +1,38 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Counterfeit Alerts</div>
+    <div class="ph-sub">5 active flags under Rwanda FDA investigation · Last updated 14 minutes ago</div>
+    <div class="grid-3" style="margin-bottom:0">
+      @for (item of stats; track item[1]) {
+        <div style="background:var(--surface3);border:1px solid var(--border);border-radius:9px;padding:14px;text-align:center">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px" [style.color]="item[2]">{{ item[0] }}</div>
+          <div style="font-size:10px;color:var(--muted)">{{ item[1] }}</div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <div class="card-title">Active Counterfeit Flags</div>
+      <button class="btn btn-ghost btn-sm" (click)="exportCounterfeit()">⬇ Export</button>
+    </div>
+    <div>
+      @for (row of rows(); track row[0]) {
+        <div style="background:rgba(201,74,24,.04);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;gap:14px">
+          <div style="font-size:22px">⚠️</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+              <span style="font-size:12px;font-weight:600;color:var(--text)">{{ row[0] }} · {{ row[1] }}</span>
+              <span class="badge b-amber">{{ row[4] }}</span>
+            </div>
+            <div style="font-size:10.5px;color:var(--muted)">{{ row[2] }} · {{ row[3] }}</div>
+          </div>
+          <div style="font-size:9.5px;color:var(--muted2);margin-right:8px">{{ row[5] }}</div>
+          <button class="btn btn-danger btn-xs" (click)="investigate(row[0])">Investigate</button>
+          <button class="btn btn-ghost btn-xs" (click)="dismiss(row[0])">Dismiss</button>
+        </div>
+      }
+    </div>
+  </div>
+</div>

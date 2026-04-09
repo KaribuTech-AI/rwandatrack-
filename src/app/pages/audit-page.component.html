@@ -1,0 +1,40 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Audit Trails</div>
+    <div class="ph-sub">Complete immutable log of all system access, data changes, and API calls.</div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Audit Trails</div>
+        <div class="card-sub">Security, API, and data change activity across RwandaTrack</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <select class="control-select" [ngModel]="filter()" (ngModelChange)="filter.set($event)" style="padding:6px 10px;font-size:10.5px">
+          <option>All Actions</option>
+          <option>Login Events</option>
+          <option>Data Changes</option>
+          <option>API Calls</option>
+          <option>Failed Attempts</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" (click)="exportAudit()">⬇ Export Log</button>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Module</th><th>Details</th><th>IP Address</th><th>Result</th></tr></thead>
+      <tbody>
+        @for (row of rows(); track row[0] + row[1] + row[2]) {
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td style="color:var(--accent2)">{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td><span class="mono-cell">{{ row[5] }}</span></td>
+            <td><span class="badge" [class]="badgeClass(row[6])">{{ row[6] }}</span></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

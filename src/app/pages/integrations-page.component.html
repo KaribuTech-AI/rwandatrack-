@@ -1,0 +1,60 @@
+<div class="page-wrap">
+  <div class="grid-3" style="margin-bottom:4px">
+    <div class="stat-card" style="cursor:default"><span class="stat-icon">✅</span><div class="stat-label">Connected</div><div class="stat-val" style="font-size:22px;color:var(--accent)">5</div></div>
+    <div class="stat-card" style="cursor:default"><span class="stat-icon">⚠️</span><div class="stat-label">Degraded</div><div class="stat-val" style="font-size:22px;color:var(--warn)">1</div></div>
+    <div class="stat-card" style="cursor:default"><span class="stat-icon">📡</span><div class="stat-label">Total Events / hr</div><div class="stat-val" style="font-size:22px;color:var(--accent2)">4,725</div></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px">
+    @for (integration of integrations; track integration.name) {
+      <div class="card" style="padding:0">
+        <div style="padding:16px 18px;display:flex;align-items:center;gap:14px">
+          <div style="width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0" [style.background]="integration.status === 'ok' ? 'var(--accent-light)' : integration.status === 'warn' ? 'var(--warn-light)' : 'var(--danger-light)'">🔗</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+              <div style="font-size:13px;font-weight:600;color:var(--text)">{{ integration.name }}</div>
+              <span class="badge" [class]="integration.status === 'ok' ? 'b-green' : integration.status === 'warn' ? 'b-amber' : 'b-red'">{{ integration.status }}</span>
+            </div>
+            <div style="font-size:10.5px;color:var(--muted)">{{ integration.description }}</div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-size:9.5px;color:var(--muted2)">
+              <span>IP: {{ integration.ip }}</span><span>Last sync: {{ integration.sync }}</span><span>Events: {{ integration.events }}</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            <button class="btn btn-ghost btn-sm" (click)="action('Connection OK', integration.name + ' responded successfully.')">Test</button>
+            @if (integration.status === 'warn') {
+              <button class="btn btn-primary btn-sm" (click)="action('Sync initiated', integration.name + ' re-sync triggered successfully.', '#0a7c55', '🔄')">Force Sync</button>
+            }
+            <button class="btn btn-ghost btn-sm" (click)="action('Config opened', 'Viewing ' + integration.name + ' connection settings.', '#5b21b6', '⚙️')">Configure</button>
+          </div>
+        </div>
+        <div style="background:var(--surface3);border-top:1px solid var(--border);padding:8px 18px;display:flex;gap:20px">
+          <div style="font-size:9.5px"><span style="color:var(--muted2)">Uptime: </span><span style="color:var(--text);font-weight:500">99.8%</span></div>
+          <div style="font-size:9.5px"><span style="color:var(--muted2)">Avg Latency: </span><span style="color:var(--text);font-weight:500">38ms</span></div>
+          <div style="font-size:9.5px"><span style="color:var(--muted2)">Last Error: </span><span style="color:var(--text);font-weight:500">{{ integration.status === 'err' ? 'Delivery timeout' : 'None' }}</span></div>
+          <div style="font-size:9.5px"><span style="color:var(--muted2)">Protocol: </span><span style="color:var(--text);font-weight:500">REST / EPCIS 2.0</span></div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Operational Signals</div>
+        <div class="card-sub">Recent metrics affecting system reliability</div>
+      </div>
+    </div>
+    <div style="padding:14px 18px">
+      @for (item of stats; track item.label) {
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+          <div>
+            <div style="font-size:11.5px;color:var(--text)">{{ item.label }}</div>
+            <div style="font-size:9.5px;color:var(--muted)">{{ item.sublabel }}</div>
+          </div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px" [style.color]="item.color">{{ item.value }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

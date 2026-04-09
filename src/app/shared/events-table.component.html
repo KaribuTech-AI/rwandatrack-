@@ -1,0 +1,31 @@
+<table class="data-table">
+  <thead>
+    <tr>
+      @for (header of headers(); track header) {
+        <th>{{ header }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows(); track row.id) {
+      <tr>
+        @if (compact()) {
+          <td><span class="epc">{{ row.epc }}</span></td>
+          <td>{{ row.type }}</td>
+          <td>{{ row.actor }}</td>
+          <td>{{ row.location }}</td>
+          <td><span class="badge" [class]="badgeClass(row.status)">{{ row.status }}</span></td>
+          <td>{{ row.timestamp }}</td>
+        } @else {
+          <td>{{ row.id }}</td>
+          <td>{{ row.type }}</td>
+          <td><span class="epc">{{ row.epc }}</span></td>
+          <td>{{ row.actor }}</td>
+          <td>{{ row.location }}</td>
+          <td><span class="badge" [class]="badgeClass(row.status)">{{ row.status }}</span></td>
+          <td>{{ row.timestamp }}</td>
+        }
+      </tr>
+    }
+  </tbody>
+</table>

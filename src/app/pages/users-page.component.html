@@ -1,0 +1,78 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">User Management</div>
+    <div class="ph-sub">8 active users across Rwanda FDA, Enabel, Ministry of Health, and partner institutions.</div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn btn-primary" (click)="openAddUser()">+ Add User</button>
+      <button class="btn btn-ghost" (click)="toast('User export', 'Downloading user list as CSV.', '#1a4fdb', '📥')">⬇ Export</button>
+      <button class="btn btn-ghost" (click)="toast('Permissions', 'Opening role and permission matrix.', '#5b21b6', '🔑')">Role Matrix</button>
+    </div>
+  </div>
+
+  <div class="card" style="padding:18px 20px">
+    @for (user of users; track user.email) {
+      <div class="user-row">
+        <div class="uav" [style.background]="user.color">{{ user.ini }}</div>
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:500;color:var(--text)">{{ user.name }}</div>
+          <div style="font-size:10px;color:var(--muted)">{{ user.email }} · {{ user.role }}</div>
+        </div>
+        <span class="badge" [class]="badgeClass(user.status)">{{ user.status }}</span>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-ghost btn-xs" (click)="toast('Editing user', 'Managing ' + user.name + ' account and permissions')">Edit</button>
+          <button class="btn btn-ghost btn-xs" (click)="toast('Password reset', 'Reset link sent to ' + user.email, '#1a4fdb', '🔑')">Reset PW</button>
+          @if (user.status === 'locked') {
+            <button class="btn btn-primary btn-xs" (click)="toast('User unlocked', user.name + ' account reactivated', '#0a7c55', '🔓')">Unlock</button>
+          } @else {
+            <button class="btn btn-ghost btn-xs" style="color:var(--danger)" (click)="toast('User locked', user.name + ' account has been temporarily locked', '#c82020', '🔒')">Lock</button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="card">
+    <div class="card-hdr"><div class="card-title">Role Permissions Matrix</div></div>
+    <div style="overflow-x:auto">
+      <table class="data-table">
+        <thead><tr><th>Role</th><th>View Events</th><th>Log Events</th><th>Initiate Recall</th><th>Manage Users</th><th>API Access</th><th>Export Data</th></tr></thead>
+        <tbody>
+          @for (row of roleMatrix; track row[0]) {
+            <tr>
+              <td style="font-weight:500;color:var(--text)">{{ row[0] }}</td>
+              <td style="text-align:center">{{ row[1] }}</td>
+              <td style="text-align:center">{{ row[2] }}</td>
+              <td style="text-align:center">{{ row[3] }}</td>
+              <td style="text-align:center">{{ row[4] }}</td>
+              <td style="text-align:center">{{ row[5] }}</td>
+              <td style="text-align:center">{{ row[6] }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  @if (showAddUserModal()) {
+    <div class="modal-overlay" style="display:flex" (click)="closeAddUser()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <div class="modal-hdr">
+          <div class="modal-title">Add User</div>
+          <div class="modal-close" (click)="closeAddUser()">×</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-field"><label>Full Name</label><input type="text" value="Aline Mukamana"></div>
+          <div class="form-field"><label>Email</label><input type="email" value="aline.mukamana@rms.rw"></div>
+          <div class="form-row">
+            <div class="form-field"><label>Role</label><select><option>Administrator</option><option>Business Analyst</option><option>Regulatory Inspector</option></select></div>
+            <div class="form-field"><label>Organization</label><input type="text" value="RMS"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm" (click)="closeAddUser()">Cancel</button>
+            <button class="btn btn-primary btn-sm" (click)="submitAddUser()">Invite User</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

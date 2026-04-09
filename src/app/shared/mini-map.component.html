@@ -1,0 +1,14 @@
+<div class="mini-map" [style.height]="height()">
+  <div class="map-grid-bg"></div>
+  @for (dot of dots(); track dot.top + dot.left) {
+    <div
+      class="map-dot"
+      [style.top]="dot.top"
+      [style.left]="dot.left"
+      [style.width.px]="dot.size"
+      [style.height.px]="dot.size"
+      [style.animationDelay]="dot.delay"
+    ></div>
+  }
+  <span style="position:relative;z-index:1;font-size:9.5px;color:var(--muted)">{{ caption() }}</span>
+</div>

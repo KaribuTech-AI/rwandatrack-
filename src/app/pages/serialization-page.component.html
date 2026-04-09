@@ -1,0 +1,64 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">Serialization Manager</div>
+    <div class="ph-sub">Manage GTIN registration, serial issuance, and activation progress across product lines.</div>
+  </div>
+  <app-stat-grid [items]="stats"></app-stat-grid>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Serialization Manager</div>
+        <div class="card-sub">GTIN registration and serial number issuance</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" (click)="exportSerialization()">⬇ Export</button>
+        <button class="btn btn-primary btn-sm" (click)="issueRange()">+ Issue Serial Range</button>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>GTIN</th><th>Product Name</th><th>Manufacturer</th><th>Range Start</th><th>Range End</th><th>Qty Issued</th><th>Activated</th><th>Issued On</th></tr>
+      </thead>
+      <tbody>
+        @for (row of rows; track row[0]) {
+          <tr>
+            <td><span class="epc">{{ row[0] }}</span></td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td><span class="badge" [class]="activationClass(row[6])">{{ row[6] }}</span></td>
+            <td>{{ row[7] }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (showIssueModal()) {
+    <div class="modal-overlay" style="display:flex" (click)="closeIssueModal()">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <div class="modal-hdr">
+          <div class="modal-title">Issue New Serial Range</div>
+          <div class="modal-close" (click)="closeIssueModal()">×</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-field"><label>Product Name</label><input type="text" value="Amoxicillin 500mg"></div>
+          <div class="form-row">
+            <div class="form-field"><label>GTIN (14 digits)</label><input type="text" value="06141410734620"></div>
+            <div class="form-field"><label>Manufacturer</label><select><option>Shelys Pharma Ltd</option><option>Universal Corp</option><option>Rwanda Pharm</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Range Start</label><input type="number" value="000001"></div>
+            <div class="form-field"><label>Quantity to Issue</label><input type="number" value="50000"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-ghost btn-sm" (click)="closeIssueModal()">Cancel</button>
+            <button class="btn btn-blue btn-sm" (click)="submitIssueRange()">Issue Range</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

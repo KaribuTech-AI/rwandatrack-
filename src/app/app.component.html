@@ -1,0 +1,86 @@
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-icon">💊</div>
+    <div>
+      <div class="sb-logo-text">RwandaTrack</div>
+      <div class="sb-logo-sub">EPCIS · Track &amp; Trace</div>
+    </div>
+  </div>
+
+  <div class="sb-scroll">
+    @for (section of navSections; track section.label) {
+      <div class="sb-section">
+        <div class="sb-section-label">{{ section.label }}</div>
+        @for (item of section.items; track item.path) {
+          <a class="nav-item" [routerLink]="['/', item.path]" routerLinkActive="active">
+            <span class="nav-icon">{{ item.icon }}</span>
+            {{ item.navLabel ?? item.label }}
+            @if (item.badge) {
+              <span class="nav-badge" [class]="item.badgeClass">{{ item.badge }}</span>
+            }
+          </a>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-status"><div class="pulse"></div>Live · All systems operational</div>
+    <a class="user-card" [routerLink]="['/settings']">
+      <div class="user-av">OW</div>
+      <div>
+        <div class="user-name">Oliver Uwantege</div>
+        <div class="user-role">Business Analyst - eHealth</div>
+      </div>
+      <span style="margin-left:auto;font-size:13px;color:var(--muted2)">⋯</span>
+    </a>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1>{{ currentPage().title }}</h1>
+      <p>{{ currentPage().sub }}</p>
+    </div>
+    <div class="topbar-right">
+      <div class="search-wrap">
+        <div class="search-input">
+          <span style="color:var(--muted);font-size:13px">🔍</span>
+          <input [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)" type="text" placeholder="Search pages, reports, workflows...">
+        </div>
+        @if (searchQuery() && filteredSearch().length) {
+          <div class="search-dropdown" style="display:block">
+            @for (item of filteredSearch(); track item.path) {
+              <div class="sd-item" (click)="navigateTo(item.path)">
+                <span class="sd-tag" style="background:var(--accent2-light);color:var(--accent2)">Page</span>
+                <div>
+                  <div class="sd-label">{{ item.icon }} {{ item.title }}</div>
+                  <div class="sd-sub">{{ item.sub }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+      <select
+        [ngModel]="ui.selectedRange()"
+        (ngModelChange)="ui.setRange($event)"
+        style="padding:6px 10px;border:1px solid var(--border2);border-radius:8px;background:var(--surface);font-size:11px;outline:none;"
+      >
+        @for (range of dateRanges; track range) {
+          <option [value]="range">{{ range }}</option>
+        }
+      </select>
+      <button class="notif-btn" [routerLink]="['/notifications']" type="button"><span>🔔</span><div class="notif-dot"></div></button>
+      <button class="btn btn-ghost" type="button" (click)="handleExport()">⬇ Export</button>
+      <button class="btn btn-primary" type="button" (click)="handleLogEvent()">+ Log Event</button>
+    </div>
+  </header>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<app-toast-outlet></app-toast-outlet>

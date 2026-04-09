@@ -1,0 +1,10 @@
+<div class="stats-row">
+  @for (item of items(); track item.label) {
+    <div class="stat-card" [class]="item.cardClass ?? ''" [style.cursor]="item.route ? 'pointer' : 'default'" (click)="handleClick(item)">
+      <span class="stat-icon">{{ item.icon }}</span>
+      <div class="stat-label">{{ item.label }}</div>
+      <div class="stat-val">{{ item.value }}</div>
+      <div class="stat-delta" [class]="item.tone">{{ item.delta }}</div>
+    </div>
+  }
+</div>

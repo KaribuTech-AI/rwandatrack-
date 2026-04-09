@@ -1,0 +1,28 @@
+<div class="page-wrap">
+  <div class="page-hero">
+    <div class="ph-title">{{ page().title }}</div>
+    <div class="ph-sub">{{ page().sub }}</div>
+  </div>
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Angular Migration In Progress</div>
+        <div class="card-sub">This route has its shell, navigation, and design system ported already.</div>
+      </div>
+    </div>
+    <div class="cov-list">
+      @for (item of links(); track item.path) {
+        <div class="cov-item" (click)="navigate(item.path)">
+          <div class="cov-left">
+            <div class="cov-dot" style="background:var(--accent2)"></div>
+            <div>
+              <div class="cov-name">{{ item.title }}</div>
+              <div class="cov-sub">{{ item.sub }}</div>
+            </div>
+          </div>
+          <div class="cov-pct">{{ item.icon }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
