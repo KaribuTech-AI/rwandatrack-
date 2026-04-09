@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rwanda-track-web-service
+  namespace: blufountain-external
+spec:
+  type: NodePort
+  selector:
+    app: rwanda-track-web
+  ports:
+    - name: https
+      port: 443
+      targetPort: 443
+      nodePort: 30171
+    - name: http
+      port: 3050
+      targetPort: 3050
+      nodePort: 30172

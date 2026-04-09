@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rwanda-track-web-deployment
+  namespace: blufountain-external
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rwanda-track-web
+  template:
+    metadata:
+      labels:
+        app: rwanda-track-web
+        appVersion: '9de3328ef3555f3add9d9a469c53852cd2625b55'
+    spec:
+      containers:
+      - name: rwanda-track-web-container
+        image: kaributechsworkflow/rwanda-track-web:9de3328ef3555f3add9d9a469c53852cd2625b55
+        ports:
+        - containerPort: 443
